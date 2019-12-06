@@ -16,9 +16,7 @@
       }
     },
     {
-      "Random": {
-        "think_ticks": 60
-      }
+      "Quickstart": {
     }
   ]
 }

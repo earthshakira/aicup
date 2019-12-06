@@ -1,6 +1,5 @@
 import model
-
-
+from random import uniform
 class MyStrategy:
     def __init__(self):
         pass
@@ -24,6 +23,8 @@ class MyStrategy:
         elif nearest_enemy is not None:
             target_pos = nearest_enemy.position
         debug.draw(model.CustomData.Log("Target pos: {}".format(target_pos)))
+        velo = (target_pos.x - unit.position.x)*uniform(-1,2)
+        debug.draw(model.CustomData.Log("velo: {:f}".format(velo)))
         aim = model.Vec2Double(0, 0)
         if nearest_enemy is not None:
             aim = model.Vec2Double(
@@ -35,11 +36,16 @@ class MyStrategy:
         if target_pos.x < unit.position.x and game.level.tiles[int(unit.position.x - 1)][int(unit.position.y)] == model.Tile.WALL:
             jump = True
         return model.UnitAction(
-            velocity=target_pos.x - unit.position.x,
-            jump=jump,
-            jump_down=not jump,
+            velocity=5,
+            jump=True,
+            jump_down=False,
             aim=aim,
             shoot=True,
             reload=False,
             swap_weapon=False,
             plant_mine=False)
+
+
+if __name__ == '__main__':
+    from subprocess import call
+    call("python3 /home/user/Documents/aicup/aicup-python/main.py",shell=True)

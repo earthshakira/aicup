@@ -4,7 +4,7 @@ from debug import Debug
 from my_strategy import MyStrategy
 import socket
 import sys
-
+from subprocess import call
 
 class Runner:
     def __init__(self, host, port, token):
@@ -38,6 +38,8 @@ class Runner:
 
 
 if __name__ == "__main__":
+    call("/home/user/Documents/aicup2019-linux/aicup2019 --config /home/user/Documents/aicup2019-linux/config.json &",shell=True)
+    call("sleep 2",shell=True)
     host = "127.0.0.1" if len(sys.argv) < 2 else sys.argv[1]
     port = 31001 if len(sys.argv) < 3 else int(sys.argv[2])
     token = "0000000000000000" if len(sys.argv) < 4 else sys.argv[3]
